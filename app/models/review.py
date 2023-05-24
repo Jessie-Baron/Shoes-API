@@ -1,7 +1,4 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
-
 
 class Review(db.Model):
     __tablename__ = 'reviews'
@@ -14,8 +11,8 @@ class Review(db.Model):
     rating = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     shoe_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("shoes.id")))
-    user = db.relationship("User", cascade="all,delete", backref="reviews")
-    shoe = db.relationship("Shoe", cascade="all,delete", backref="reviews")
+    user = db.relationship("User", backref="reviews")
+    shoe = db.relationship("Shoe", backref="reviews")
 
 
     def to_dict(self):
