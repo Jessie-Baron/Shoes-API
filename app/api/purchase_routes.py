@@ -1,5 +1,5 @@
-from app.models import Purchase
-from flask import Blueprint, db, request, jsonify
+from app.models import Purchase, db
+from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
 from app.forms import PurchaseForm, PurchaseEditForm
 
