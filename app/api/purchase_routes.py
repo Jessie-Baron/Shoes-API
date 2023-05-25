@@ -29,14 +29,13 @@ def get_purchase_id(id):
 
 
 @purchase_routes.route('', methods=['POST'])
-def post_purchase():
+def post_purchase(id):
     form = PurchaseForm()
     if form.validate_on_submit():
         purchase_upload = Purchase(
-                    id=form.data['id'],
                     name=form.data['name'],
                     date_of_purchase = form.data['date_of_purchase'],
-                    shoe_id = form.data["shoe_id"],
+                    shoe_id = id,
                     user_id=current_user.id
         )
         db.session.add(purchase_upload)
@@ -48,14 +47,11 @@ def post_purchase():
 def edit_purchase(id):
     purchase = Purchase.query.get(id)
     if current_user.id == purchase.user_id:
-        form = PurchaseEditForm()        
+        form = PurchaseEditForm()
         if form.validate_on_submit():
-            purchase.id = form.data["id"],
             purchase.name = form.data["name"],
             purchase.date_of_purchase = form.data["date_of_purchase"],
             #will revisit this later, not sure what I did incorrectly
-            shoe_id = form.data["shoe_id"],
-            user_id = current_user.id,
             db.session.add(purchase)
             db.session.commit()
             return purchase.to_dict()
@@ -70,4 +66,3 @@ def delete_purchase(id):
         db.session.commit()
         return {"data": "Deleted"}
     return {'errors': ['Unauthorized']}
-
