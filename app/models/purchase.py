@@ -1,13 +1,13 @@
-from xmlrpc.client import DateTime
+import datetime
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Purchase(db.Model):
-    __tablename__ = 'purchase'
+    __tablename__ = 'purchases'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    now = DateTime.datetime.utcnow
+    now = datetime.datetime.utcnow()
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False, unique=True)
@@ -15,7 +15,7 @@ class Purchase(db.Model):
     shoe_id = db.Column(db.Integer,  db.ForeignKey(add_prefix_for_prod("shoes.id")))
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     user = db.relationship("User", backref="purchases")
-    shoe = db.relationship("Shoes", backref="purchases")
+    shoe = db.relationship("Shoe", backref="purchases")
 
 
     def to_dict(self):

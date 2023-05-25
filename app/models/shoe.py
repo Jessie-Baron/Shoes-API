@@ -12,7 +12,6 @@ class Shoe(db.Model):
     color = db.Column(db.String(40), nullable=False)
     material = db.Column(db.String(40), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    review_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("reviews.id")))
     review = db.relationship("Review", backref="shoes")
 
 
