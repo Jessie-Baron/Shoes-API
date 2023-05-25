@@ -1,6 +1,6 @@
 from app.models import Purchase
 from flask import Blueprint, db, request, jsonify
-from flask_login import current_user
+from flask_login import current_user, login_required
 from app.forms import PurchaseForm, PurchaseEditForm
 
 
@@ -29,6 +29,7 @@ def get_purchase_id(id):
 
 
 @purchase_routes.route('', methods=['POST'])
+@login_required
 def post_purchase(id):
     form = PurchaseForm()
     if form.validate_on_submit():
@@ -51,7 +52,6 @@ def edit_purchase(id):
         if form.validate_on_submit():
             purchase.name = form.data["name"],
             purchase.date_of_purchase = form.data["date_of_purchase"],
-            #will revisit this later, not sure what I did incorrectly
             db.session.add(purchase)
             db.session.commit()
             return purchase.to_dict()
