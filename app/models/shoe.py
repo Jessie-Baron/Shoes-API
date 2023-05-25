@@ -6,7 +6,7 @@ class Shoe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     img_url = db.Column(db.String(255), nullable=True, unique=True)
     brand = db.Column(db.String(40), nullable=False)
-    model = db.Column(db.String(255), nullable=False, unique=True)
+    model = db.Column(db.String(255), nullable=False)
     type = db.Column(db.String(40), nullable=False)
     size = db.Column(db.Integer, nullable=False)
     color = db.Column(db.String(40), nullable=False)
