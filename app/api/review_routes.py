@@ -15,37 +15,6 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{error}')
     return errorMessages
 
-@review_routes.route('')
-def get_reviews():
-    """
-    queries for all reviews for a shoe
-    """
-    data = Review.query.all()
-    print("this is the data", data)
-    return {review.to_dict()['id']: review.to_dict() for review in data}
-
-@review_routes.route('/<int:id>', methods=['POST'])
-@login_required
-def post_review(id):
-    """
-    Posts a review to a shoe
-    """
-    form = ReviewForm()
-    print(request)
-    form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
-    print(form.errors)
-    print(form.validate_on_submit())
-    if form.validate_on_submit():
-        review = Review(body=form.data['body'],
-                        rating = form.data['rating'],
-                        user_id=current_user.id,
-                        shoe_id=id)
-        db.session.add(review)
-        db.session.commit()
-        return review.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 
 @review_routes.route('/<int:id>', methods=['PUT'])
 @login_required
