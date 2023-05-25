@@ -8,6 +8,9 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
+	const [first_name, setFirstName] = useState("");
+	const [last_name, setLastName] = useState("");
+	const [image_url, setImageUrl] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -16,7 +19,7 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+			const data = await dispatch(signUp(first_name, last_name, username, email, image_url, password));
 			if (data) {
 				setErrors(data);
 			} else {
@@ -39,7 +42,25 @@ function SignupFormModal() {
 					))}
 				</ul>
 				<label>
-					Email
+					First Name
+					<input
+						type="text"
+						value={first_name}
+						onChange={(e) => setFirstName(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Last Name
+					<input
+						type="text"
+						value={last_name}
+						onChange={(e) => setLastName(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					email
 					<input
 						type="text"
 						value={email}
@@ -71,6 +92,15 @@ function SignupFormModal() {
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Profile Picture URL
+					<input
+						type="test"
+						value={image_url}
+						onChange={(e) => setImageUrl(e.target.value)}
 						required
 					/>
 				</label>
