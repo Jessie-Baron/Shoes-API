@@ -5,3 +5,449 @@
 .hidden {
   display: none;
 }
+
+#home-logo {
+  margin: 0;
+  margin-left: 10%;
+  padding: 10px 0;
+  font-size: 24px;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.logo-text {
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+#search-icon {
+  color: rgb(118, 117, 117);
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  z-index: 50;
+}
+
+#search-icon-active {
+  color: white;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  z-index: 500;
+}
+
+.search-button {
+  border: none;
+  outline: none;
+  opacity: 0;
+  width: 0px;
+}
+
+#search-icon-active:hover {
+  cursor: pointer;
+  color: rgb(156, 155, 155);
+}
+
+.search-divider {
+  width: 20px;
+  rotate: 90deg;
+  padding: 0;
+  border-color: rgb(118, 117, 117);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 60%;
+  gap: 5px;
+}
+
+.shoe-logo {
+  display: block;
+}
+
+.navigation-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 7px;
+  box-shadow: rgb(255 255 255 / 12%) 0px 1px 1px;
+  position: fixed;
+  width: 100%;
+  z-index: 500;
+  background-color: rgb(18, 18, 18);
+  top: 0;
+}
+
+.search-items {
+  display: flex;
+  align-items: center;
+  margin-left: 23%;
+  width: 340px;
+  height: 45px;
+  border: none;
+  background: transparent;
+  background-color: rgb(49, 49, 49);
+  outline: none;
+  padding: 0px;
+  margin-top: 10px;
+  border-radius: 33px;
+}
+
+.search-bar {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0px;
+  width: 252px;
+  margin-left: 5%;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.9);
+  caret-color: white;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 25px;
+  margin-left: 25%;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.upload-button {
+  width: 110px;
+  height: 36px;
+  border: 1px solid rgba(22, 24, 35, 0.12);
+  background-color: rgb(35, 35, 35);
+  border-radius: 2px;
+}
+
+.upload {
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+#root > div > nav > div > div.nav-buttons > button.signIn {
+  width: 110px;
+  height: 36px;
+  border: none;
+  background-color: rgb(255, 59, 92);
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+#root > div > nav > div > div.nav-buttons > button.signIn:hover {
+  cursor: pointer;
+  background-color: rgb(250, 41, 76);
+}
+
+.upload-button:hover {
+  cursor: pointer;
+  background-color: #141414;
+}
+
+#messages {
+  color: white;
+  font-size: 20px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.sideBar-items {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin-left: 8%;
+  margin-top: 5%;
+  top: 0;
+  position: fixed;
+  overflow-y: scroll;
+  scrollbar-color: grey;
+  scrollbar-width: thin;
+  height: 800px;
+}
+
+.sideBar-items::-webkit-scrollbar-thumb {
+  width: 6px;
+  height: 100%;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .08);
+}
+
+.sideBar-items::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sideBar-container-clicked {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  gap: 5px;
+  font-size: 18px;
+  line-height: 25px;
+  text-decoration: none;
+  color: rgb(255, 59, 92);;
+  font-weight: 400;
+  display: flex;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.sideBar-container-clicked:hover {
+  cursor: pointer;
+  background-color: #2a2a2a;
+}
+
+.sideBar-container {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  gap: 5px;
+  font-size: 18px;
+  line-height: 25px;
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  display: flex;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.sideBar-container:hover {
+  cursor: pointer;
+  background-color: #2a2a2a;
+}
+
+.sideBar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#for-you-logo {
+  font-size: 20px;
+}
+
+#following-logo {
+  font-size: 20px;
+}
+
+.login-header {
+  color: rgb(118, 117, 117);;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.login-container-sidebar {
+  padding-bottom: 25px;
+  border-bottom: .8px solid rgba(66, 66, 66, .5);
+}
+
+.suggested-headline {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  color: rgb(118, 117, 117);;
+}
+
+.suggested-see-all {
+  color: rgb(255, 59, 92);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.suggested-feed {
+  border-bottom: .8px solid rgba(66, 66, 66, .5);
+}
+
+#root > div > div.sideBar-items > div.login-container-sidebar > button.signIn {
+  font-size: 18px;
+  line-height: 25px;
+  color: rgba(255, 59, 92, 1);
+  text-decoration: none;
+  font-weight: 400;
+  width: 100%;
+  height: 48px;
+  border-color: rgba(255, 59, 92, 1);
+  background-color: rgba(255, 255, 255, .08);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+#root > div > div.sideBar-items > div.login-container-sidebar > button.signIn:hover {
+  cursor: pointer;
+  background-color: rgb(36, 16, 16);
+}
+
+.navbar-profile {
+  width: 30px;
+  height: 30px;
+  border-radius: 33px;
+  cursor: pointer;
+}
+
+.dropdown {
+  background-clip: padding-box;
+  left: 0;
+  list-style: none;
+  margin-top: 2px;
+  position: absolute;
+  top: 100%;
+  width: 200px;
+  z-index: 100;
+  margin-left: 75%;
+}
+
+.main-menu-inner {
+  border-radius: 3px;
+  background: rgb(49, 49, 49);
+  color: white;
+}
+
+.main-menu-wrapper {
+  min-width: 200px;
+  padding: 24px 0;
+  display: block;
+}
+
+.dropdown-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 200px;
+}
+
+.dropdown-links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 5px;
+}
+
+.info-item {
+  top: 0;
+  bottom: 0;
+  margin-top: 0px;
+}
+
+.dropdown-divider {
+  width: 70%;
+  border-color: rgb(178, 178, 178);
+  opacity: .4;
+}
+
+.dropdown-link-item {
+  text-decoration: none;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.dropdown-link-item:hover {
+  cursor: pointer;
+  background-color: #2a2a2a;
+}
+
+.profile-navi {
+  width: 45px;
+  height: 45px;
+  border-radius: 33px;
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-clip: padding-box;
+  left: 0;
+  top: 0;
+  padding-top: 0px;
+  list-style: none;
+  margin-top: 2px;
+  position: absolute;
+  top: 100%;
+  width: 250px;
+  z-index: 100;
+  margin-left: 34%;
+  margin-bottom: 15px;
+  background-color: rgb(49, 49, 49);
+  border-radius: 7px;
+
+}
+
+.search-result-items {
+  display: flex;
+}
+
+.search-results-header {
+  color: rgb(156, 155, 155);
+  padding-left: 15px;
+}
+
+.search-names {
+  color: rgb(156, 155, 155);
+}
+
+.user-suggested-nav {
+  display: flex;
+  gap: 10px;
+  color: rgb(156, 155, 155);
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  width: 2401x;
+  padding-left: 15px;
+}
+
+.user-suggested-nav:hover {
+  background-color: #2a2a2a;
+}
+
+.user-header-navi {
+  text-decoration: none;
+  color: white;
+}
+
+.fixed-sideBar {
+  color: rgb(156, 155, 155);
+}
+
+.socialIcon {
+  width: 25px;
+}
+
+.socialsContainer {
+  display: flex;
+  gap: 5px;
+}
+
+.social-footer {
+  font-size: 12px;
+}
+
+.sideBar-seperator {
+  opacity: .2;
+  border-color: grey;
+}

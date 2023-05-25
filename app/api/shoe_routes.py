@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from ..models import Shoe, db
-from app.forms import ShoeForm, ShoeEditForm
+from ..models import Shoe, db, Review
+from app.forms import ShoeForm, ShoeEditForm, ReviewForm
 
 shoe_routes = Blueprint('shoes', __name__)
 
@@ -15,7 +15,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{error}')
     return errorMessages
 
-@shoe_routes.route('/')
+@shoe_routes.route('')
 def shoes():
     """
     Query for all shoes and return them in a list of shoe dictionaries
@@ -36,9 +36,9 @@ def shoe(id):
 
 @shoe_routes.route('/<int:id>', methods=['POST'])
 @login_required
-def post_review(id):
+def post_shoe(id):
     """
-    Posts a review to a shoe
+    Create a shoe
     """
     form = ShoeForm()
     print(request)
@@ -59,9 +59,9 @@ def post_review(id):
 
 @shoe_routes.route('/<int:id>', methods=['PUT'])
 @login_required
-def fix_review(id):
+def fix_shoe(id):
     """
-    Query for a single review and edit that review
+    Query for a single shoe and edit that shoe
     """
     shoe = Shoe.query.get(id)
     if current_user.id == shoe.user_id:
@@ -79,9 +79,9 @@ def fix_review(id):
 
 @shoe_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
-def remove_review(id):
+def remove_shoe(id):
     """
-    Query for a single review and delete that review
+    Query for a single shoe and delete that shoe
     """
     shoe = Shoe.query.get(id)
     print(current_user.id == shoe.user_id)
@@ -90,3 +90,37 @@ def remove_review(id):
         db.session.commit()
         return {'message': 'Deleted'}
     return {'errors': ['Unauthorized']}
+
+
+# review routes
+
+@shoe_routes.route('/reviews')
+def get_reviews():
+    """
+    queries for all reviews for a shoe
+    """
+    data = Review.query.all()
+    print("this is the data", data)
+    return {review.to_dict()['id']: review.to_dict() for review in data}
+
+@shoe_routes.route('/<int:id>/reviews', methods=['POST'])
+@login_required
+def post_review(id):
+    """
+    Posts a review to a shoe
+    """
+    form = ReviewForm()
+    print(request)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
+    print(form.errors)
+    print(form.validate_on_submit())
+    if form.validate_on_submit():
+        review = Review(body=form.data['body'],
+                        rating = form.data['rating'],
+                        user_id=current_user.id,
+                        shoe_id=id)
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
