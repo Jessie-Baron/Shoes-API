@@ -24,11 +24,10 @@ const deletePurchase = (id) => ({
 });
 
 export const fetchAllPurchase = () => async (dispatch) => {
-  const {name, date_of_purchase} = purchase
   const response = await fetch("/api/purchases");
   if (response.ok) {
     const reviews = await response.json();
-    dispatch(getReviews(reviews));
+    dispatch(getPurchases(reviews));
     return reviews;
   }
 };

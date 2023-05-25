@@ -33,7 +33,7 @@ export const fetchAllShoes = () => async (dispatch) => {
 };
 
 export const fetchPostShoe = (shoe) => async (dispatch) => {
-  const { img_url, brand, model, type, size, color, material, price, review_id } = shoe;
+  const { img_url, brand, model, type, size, color, material, price } = shoe;
   const response = await fetch("/api/shoes", {
     method: "POST",
     headers: {
