@@ -10,7 +10,6 @@ def seed_reviews():
         body="Impressed with the durability.", rating=4, user_id=1, shoe_id=3)
     demo_review_4 = Review(
         body="Highly recommend these shoes.", rating=5, user_id=1, shoe_id=4)
-
     marnie_review_1 = Review(
         body="Nice design and comfortable.", rating=4, user_id=2, shoe_id=5)
     marnie_review_2 = Review(
@@ -19,7 +18,6 @@ def seed_reviews():
         body="Slightly tight in the toe area.", rating=3, user_id=2, shoe_id=7)
     marnie_review_4 = Review(
         body="Good value for the price.", rating=4, user_id=2, shoe_id=8)
-
     bobbie_review_1 = Review(
         body="Not happy with the quality.", rating=2, user_id=3, shoe_id=9)
     bobbie_review_2 = Review(
@@ -28,7 +26,6 @@ def seed_reviews():
         body="Uncomfortable after long hours of wear.", rating=2, user_id=3, shoe_id=11)
     bobbie_review_4 = Review(
         body="Disappointed with the color.", rating=2, user_id=3, shoe_id=12)
-
     bella_review_1 = Review(
         body="Love these shoes! Highly recommend.", rating=5, user_id=4, shoe_id=13)
     bella_review_2 = Review(
