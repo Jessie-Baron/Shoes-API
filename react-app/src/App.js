@@ -29,6 +29,10 @@ function App() {
             <NavBar />
             <UploadShoe />
           </Route>
+          <Route path='/shoes/:shoeId'>
+            <NavBar />
+            <ShoeIndex />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

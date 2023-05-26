@@ -7,6 +7,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import UploadShoe from '../Shoe/AddShoe'
 // import './NavBar.css'
 import Shoes from '../Shoe/AllShoes';
 
@@ -108,7 +109,11 @@ const NavBar = () => {
                     </button>
                 </form>
                 <div className='nav-buttons'>
-                    <button className='upload-button'><NavLink className='upload' to='/upload' exact={true} activeClassName='active'>Add Shoe</NavLink></button>
+                {user && <div className='upload-button'>            <OpenModalButton
+                        buttonText="Add Shoe"
+                        onItemClick={closeMenu}
+                        modalComponent={<UploadShoe />}
+                    /></div>}
                     {user && <img onClick={openMenu} className='navbar-profile' src={user.image_url} alt='profile' />}
                     {!user && <div className='login-button'>            <OpenModalButton
                         buttonText="Log In"

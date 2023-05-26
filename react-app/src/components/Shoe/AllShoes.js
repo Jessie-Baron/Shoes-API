@@ -48,28 +48,10 @@ const Shoes = () => {
                             />
                         </div>
                         <div className="right">
-                            <div className="item-header2">
-                                <NavLink to={`/users/${shoe?.User?.id}`} className="video-username">{shoe?.User?.username}</NavLink>
-                                <div className="video-name">{shoe?.User?.first_name} {shoe?.User?.last_name}</div>
-                            </div>
                             <div className="caption-wrapper">
-                                {/* <NavLink className="caption" to={`/shoes/${shoe.id}`} exact={true}>{shoe.caption}</NavLink> */}
+                                <NavLink className="caption" to={`/shoes/${shoe.id}`} exact={true}>{shoe.brand} {shoe.model}</NavLink>
+                                <div>{shoe.type} ${shoe.price}</div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="video-review">
-                        {user &&
-                            <div className="video-sidebar">
-                                <div className="wrapper-plus-summary">
-                                    <NavLink to={`/shoes/${shoe?.id}`} className="review-wrapper">
-                                        <center>
-                                            <i id='review-icon' class="fa-regular fa-review"></i>
-                                        </center>
-                                    </NavLink>
-                                    <div className="like-number">{shoe?.reviews?.length}</div>
-                                </div>
-                            </div>}
-                        <div className="reviews">
                         </div>
                     </div>
                 </div>))}</div>
