@@ -10,7 +10,7 @@ const Shoes = () => {
     // const user = useSelector((state) => state.session.user);
     const history = useHistory();
     const shoes = Object.values(useSelector((state) => state.shoe));
-    const filterShoes = shoes.slice(0, 28)
+    const filterShoes = shoes.slice(0, 30)
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);

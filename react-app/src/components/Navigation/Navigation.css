@@ -130,6 +130,24 @@
   border-radius: 2px;
 }
 
+.login-button {
+  width: 75px;
+  padding-left: 20px;
+  height: 36px;
+  border: 1px solid rgba(22, 24, 35, 0.12);
+  background-color: rgb(35, 35, 35);
+  border-radius: 2px;
+}
+
+.signup-button {
+  width: 75px;
+  padding-left: 20px;
+  height: 36px;
+  border: 1px solid rgba(22, 24, 35, 0.12);
+  background-color: rgb(35, 35, 35);
+  border-radius: 2px;
+}
+
 .upload {
   font-size: 16px;
   line-height: 24px;
@@ -157,6 +175,16 @@
 }
 
 .upload-button:hover {
+  cursor: pointer;
+  background-color: #141414;
+}
+
+.login-button:hover {
+  cursor: pointer;
+  background-color: #141414;
+}
+
+.signup-button:hover {
   cursor: pointer;
   background-color: #141414;
 }
@@ -388,7 +416,7 @@
   top: 100%;
   width: 250px;
   z-index: 100;
-  margin-left: 34%;
+  margin-left: 27%;
   margin-bottom: 15px;
   background-color: rgb(49, 49, 49);
   border-radius: 7px;

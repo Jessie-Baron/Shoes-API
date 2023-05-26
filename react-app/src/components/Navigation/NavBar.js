@@ -63,11 +63,11 @@ const NavBar = () => {
 
     const searchClick = () => {
         setQuery("")
-        history.push(`/users/${searchItem?.href.slice(-1)}`)
+        history.push(`/shoes/${searchItem?.href.slice(-1)}`)
     }
 
-    const searchClick2 = (userId) => {
-        history.push(`/users/${userId}`)
+    const searchClick2 = (shoeId) => {
+        history.push(`/shoes/${shoeId}`)
         setQuery("")
     }
 
@@ -79,23 +79,23 @@ const NavBar = () => {
                 <div className="shoe-logo">
                     <NavLink className="logo-container" to="/" exact={true}>
                         <i id='home-logo' class="fa-brands fa-tiktok"></i>
-                        <div className="logo-text">shoe</div>
+                        <div className="logo-text">Soul</div>
                     </NavLink>
                 </div>
                 <form className='search-items'>
                     <div className='search-results'>
-                        {query && <h5 className='search-results-header'>Accounts</h5>}
-                        {query ? usersNav.filter(user => {
+                        {query && <h5 className='search-results-header'>Shoes</h5>}
+                        {query ? shoes.filter(shoe => {
                             if (query === '') {
-                                return user
-                            } else if (user.username.toLowerCase().includes(query.toLocaleLowerCase())) {
+                                return shoe
+                            } else if (shoe.model.toLowerCase().includes(query.toLocaleLowerCase())) {
                                 return user
                             }
                         }).map((shoe, index) => (
                             <div className='user-suggested-nav' key={shoe.id}>
-                                <img className='profile-navi' src={shoe?.image_url} alt="user logo" />
+                                <img className='profile-navi' src={shoe?.img_url} alt="shoe logo" />
                                 <div className='suggested-text'>
-                                    <div className='user-header-navi' onClick={() => searchClick2(shoe.id)}>{shoe.name}</div>
+                                    <div className='user-header-navi' onClick={() => searchClick2(shoe.id)}>{shoe.model}</div>
                                 </div>
                             </div>
                         )) : null}
@@ -110,12 +110,12 @@ const NavBar = () => {
                 <div className='nav-buttons'>
                     <button className='upload-button'><NavLink className='upload' to='/upload' exact={true} activeClassName='active'>Add Shoe</NavLink></button>
                     {user && <img onClick={openMenu} className='navbar-profile' src={user.image_url} alt='profile' />}
-                    {!user && <div>            <OpenModalButton
+                    {!user && <div className='login-button'>            <OpenModalButton
                         buttonText="Log In"
                         onItemClick={closeMenu}
                         modalComponent={<LoginFormModal />}
                     /></div>}
-                    {!user && <div>            <OpenModalButton
+                    {!user && <div className='signup-button'>            <OpenModalButton
                         buttonText="Sign Up"
                         onItemClick={closeMenu}
                         modalComponent={<SignupFormModal />}
