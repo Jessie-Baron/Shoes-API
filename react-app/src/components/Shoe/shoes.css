@@ -1,0 +1,10 @@
+.shoe-feed {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.profileImage {
+    width: 150px;
+    height: 150px;
+}

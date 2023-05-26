@@ -22,6 +22,5 @@ class Review(db.Model):
             'rating': self.rating,
             'user_id': self.user_id,
             'shoe_id': self.shoe_id,
-            'User': [user.to_dict() for user in self.user],
-            'Shoe': [shoe.to_dict() for shoe in self.shoe]
+            'User': self.user.to_dict()
         }

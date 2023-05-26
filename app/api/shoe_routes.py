@@ -20,9 +20,8 @@ def shoes():
     """
     Query for all shoes and return them in a list of shoe dictionaries
     """
-    shoes = Shoe.query.all()
-    print("this is the data", shoes)
-    return {'shoes': [shoe.to_dict() for shoe in shoes]}
+    data = Shoe.query.all()
+    return {shoe.to_dict()['id']: shoe.to_dict() for shoe in data}
 
 
 @shoe_routes.route('/<int:id>')
@@ -30,10 +29,8 @@ def shoe(id):
     """
     Query for a shoe by id and return that shoe in a dictionary
     """
-    shoe = Shoe.query.get(id)
-    if shoe is None:
-        return jsonify({'error': 'Shoe not found'}), 404
-    return jsonify(shoe.to_dict())
+    data = Shoe.query.get(id)
+    return data.to_dict()
 
 @shoe_routes.route('/<int:id>', methods=['POST'])
 @login_required

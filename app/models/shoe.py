@@ -14,8 +14,6 @@ class Shoe(db.Model):
     price = db.Column(db.Integer, nullable=False)
     review = db.relationship("Review", backref="shoes")
 
-
-    @property
     def to_dict(self):
         return {
             'id': self.id,
@@ -27,6 +25,5 @@ class Shoe(db.Model):
             'color': self.color,
             'material': self.material,
             'price': self.price,
-            'review_id': self.review_id,
             'Review': [review.to_dict() for review in self.reviews]
         }

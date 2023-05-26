@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import * as shoeActions from "../../store/shoe";
 import { getReviews, fetchDeleteReview} from "../../store/review";
+import './shoes.css'
 
 
 const Shoes = () => {
     // const user = useSelector((state) => state.session.user);
     const history = useHistory();
     const shoes = Object.values(useSelector((state) => state.shoe));
+    const filterShoes = shoes.slice(0, 28)
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
@@ -35,12 +37,12 @@ const Shoes = () => {
 
     return (
         <div>
-            <div className="shoe-feed">{shoes?.map((shoe) => (
+            <div className="shoe-feed">{filterShoes?.map((shoe) => (
                 <div key={shoe.id}>
                     <div className="item-header3">
                         <div className="left">
                             <img
-                                src={shoe?.User?.image_url}
+                                src={shoe?.img_url}
                                 alt="Profile"
                                 className="profileImage"
                             />
