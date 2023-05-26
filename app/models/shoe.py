@@ -4,7 +4,7 @@ class Shoe(db.Model):
     __tablename__ = 'shoes'
 
     id = db.Column(db.Integer, primary_key=True)
-    img_url = db.Column(db.String(255), nullable=True, unique=True)
+    img_url = db.Column(db.String(255), nullable=True)
     brand = db.Column(db.String(40), nullable=False)
     model = db.Column(db.String(255), nullable=False)
     type = db.Column(db.String(40), nullable=False)

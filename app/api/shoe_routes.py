@@ -21,7 +21,8 @@ def shoes():
     Query for all shoes and return them in a list of shoe dictionaries
     """
     shoes = Shoe.query.all()
-    return jsonify({'shoes': [shoe.to_dict() for shoe in shoes]})
+    print("this is the data", shoes)
+    return {'shoes': [shoe.to_dict() for shoe in shoes]}
 
 
 @shoe_routes.route('/<int:id>')
