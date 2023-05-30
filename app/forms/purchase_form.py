@@ -10,4 +10,4 @@ def name_is_too_long(form, field):
 
 class PurchaseForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(), name_is_too_long])
-    date_of_purchase = DateField("date of purchase", validators=[DataRequired()])
+    shoe_id = IntegerField('shoe_id',  validators=[DataRequired()])
