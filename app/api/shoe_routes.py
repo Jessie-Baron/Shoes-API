@@ -118,6 +118,7 @@ def post_review(id):
                         rating = form.data['rating'],
                         user_id=current_user.id,
                         shoe_id=id)
+        print(type(review.body))
         db.session.add(review)
         db.session.commit()
         return review.to_dict()

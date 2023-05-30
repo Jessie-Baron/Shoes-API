@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import * as shoeActions from "../../store/shoe";
-import { getReviews, fetchDeleteReview} from "../../store/review";
+import { getReviews, fetchDeleteReview } from "../../store/review";
 import './shoes.css'
 
 

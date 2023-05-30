@@ -109,6 +109,11 @@ const NavBar = () => {
                     </button>
                 </form>
                 <div className='nav-buttons'>
+                {user && <div className='purchasesLink'>            <NavLink
+                to='/purchases' exact={true}>
+                    Purchases
+                </NavLink>
+                    </div>}
                 {user && <div className='upload-button'>            <OpenModalButton
                         buttonText="Add Shoe"
                         onItemClick={closeMenu}

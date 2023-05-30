@@ -5,6 +5,13 @@ from app.forms import ReviewForm, ReviewEditForm
 
 review_routes = Blueprint('reviews', __name__)
 
+def convert_tuple(tup):
+    str = ''
+    for item in tup:
+        str = str + item
+    return str
+
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
@@ -23,13 +30,15 @@ def fix_review(id):
     Query for a single review and edit that review
     """
     review = Review.query.get(id)
+    print(review)
     if current_user.id == review.user_id:
-        form = ReviewEditForm()
+        form = ReviewForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        print(form.data)
         if form.validate_on_submit():
-            review.body = form.data['body'],
+            review.body = convert_tuple(form.data['body']),
             review.rating = form.data['rating'],
+            review.body = convert_tuple(review.body)
+            review.rating = review.rating[0]
             db.session.add(review)
             db.session.commit()
             return review.to_dict()

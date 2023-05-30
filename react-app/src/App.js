@@ -9,6 +9,7 @@ import Shoe from './components/Shoe/AllShoes';
 import ShoeIndex from './components/Shoe/ShoeIndex'
 import NavBar from "./components/Navigation/NavBar";
 import UploadShoe from './components/Shoe/AddShoe'
+import Purchases from "./components/Purchase/Purchase";
 
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
           <Route path='/upload'>
             <NavBar />
             <UploadShoe />
+          </Route>
+          <Route path='/purchases'>
+            <NavBar />
+            <Purchases />
           </Route>
           <Route path='/shoes/:shoeId'>
             <NavBar />

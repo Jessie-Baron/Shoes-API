@@ -33,8 +33,8 @@ export const fetchAllReviews = () => async (dispatch) => {
 };
 
 export const fetchPostReview = (review) => async (dispatch) => {
-  const { caption, url } = review;
-  const response = await fetch("/api/reviews", {
+  console.log(review)
+  const response = await fetch(`/api/shoes/${review.shoe_id}/reviews`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,9 +48,9 @@ export const fetchPostReview = (review) => async (dispatch) => {
   }
 };
 
-export const fetchEditReview = (reviewId, payload) => async (dispatch) => {
-  console.log(reviewId)
-  const res = await fetch(`/api/reviews/${reviewId}`, {
+export const fetchEditReview = (payload) => async (dispatch) => {
+  console.log((payload.rating))
+  const res = await fetch(`/api/reviews/${payload.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"

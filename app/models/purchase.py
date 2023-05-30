@@ -20,9 +20,9 @@ class Purchase(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'date of purchase': self.date_of_purchase,
+            'date_of_purchase': self.date_of_purchase,
             'shoe_id': self.shoe_id,
             'user_id': self.user_id,
-            'User': [user.to_dict() for user in self.user],
-            'Shoe':[shoe.to_dict() for shoe in self.shoe]
+            'User': self.user.to_dict(),
+            'Shoe': self.shoe.to_dict()
         }
