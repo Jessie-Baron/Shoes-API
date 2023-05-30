@@ -1,48 +1,62 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import * as shoeActions from "../../store/shoe";
 
+function ShoeEditForm({setType, type, brand, setBrand, model, setModel, shoe_type, size, setSize, color, setColor, material, setMaterial, price, setPrice, setShowEdit, shoeId}) {
+  console.log(shoeId, "this is the shoeId")
+  const userId = useSelector((state) => state.session.user.id);
+  const [validationErrors, setValidationErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const dispatch = useDispatch()
 
-const UploadShoe = () => {
-    const dispatch = useDispatch()
-    const history = useHistory()
+  const onSubmit = async (e) => {
+    // Prevent the default form behavior so the page doesn't reload.
+    e.preventDefault();
 
-    const [img_url, setImgUrl] = useState('');
-    const [brand, setBrand] = useState('');
-    const [model, setModel] = useState("");
-    const [type, setType] = useState('');
-    const [size, setSize] = useState('');
-    const [color, setColor] = useState('');
-    const [material, setMaterial] = useState("");
-    const [price, setPrice] = useState('');
+    setHasSubmitted(true);
+    if (validationErrors.length) return alert(`Cannot Submit`);
+
+    // Create a new object for the body form information.
+    const shoeForm = {
+        type: type,
+        brand: brand,
+        model: model,
+        shoe_type: shoe_type,
+        size: size,
+        color: color,
+        material: material,
+        price: price,
+        shoeId: shoeId
+    };
 
 
-    const handleSubmit = async (e) => {
+    await dispatch(shoeActions.fetchEditShoe(shoeForm))
+    // await dispatch(shoeActions.fetchAllShoes())
+    setShowEdit(false)
 
-        const shoe = {
-            img_url,
-            brand,
-            model,
-            type,
-            size,
-            color,
-            material,
-            price
-        }
 
-        await dispatch(shoeActions.fetchPostShoe(shoe))
-        history.push('/')
-    }
+    // Reset the form state.
+    setType("");
+    setBrand("");
+    setModel("");
+    setType("");
+    setSize("");
+    setColor("");
+    setMaterial("");
+    setPrice("");
+    setValidationErrors([]);
+    setHasSubmitted(false);
+  };
 
-    return (
-        <div>
-            <h2>
-                Upload a Shoe
-            </h2>
-            <form onSubmit={handleSubmit}>
-                <label>
+  return (
+    <form id="form1" noValidate onSubmit={onSubmit}>
+    <ul>
+      {validationErrors.map((error, idx) => (
+        <li key={idx}>{error}</li>
+      ))}
+    </ul>
+    <label>
                     Brand
                     <input
                         type="text"
@@ -81,7 +95,7 @@ const UploadShoe = () => {
                 <label>
                     Color
                     <input
-                        type="text"
+                        type="password"
                         value={color}
                         onChange={(e) => setColor(e.target.value)}
                         required
@@ -90,7 +104,7 @@ const UploadShoe = () => {
                 <label>
                     Material
                     <input
-                        type="text"
+                        type="password"
                         value={material}
                         onChange={(e) => setMaterial(e.target.value)}
                         required
@@ -99,26 +113,15 @@ const UploadShoe = () => {
                 <label>
                     price
                     <input
-                        type="text"
+                        type="test"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                         required
                     />
                 </label>
-                <label>
-                Paste an Image URL
-                    <input
-                        type="text"
-                        value={img_url}
-                        onChange={(e) => setImgUrl(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Upload</button>
-            </form>
-
-        </div>)
-
+    <button className='comment-button' type="submit">Respond</button>
+  </form>
+);
 }
 
-export default UploadShoe;
+export default ShoeEditForm;

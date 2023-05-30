@@ -23,6 +23,5 @@ class Purchase(db.Model):
             'date_of_purchase': self.date_of_purchase,
             'shoe_id': self.shoe_id,
             'user_id': self.user_id,
-            'User': self.user.to_dict(),
-            'Shoe': self.shoe.to_dict()
+            'User': self.user.to_dict()
         }

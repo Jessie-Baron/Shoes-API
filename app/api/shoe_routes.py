@@ -32,28 +32,26 @@ def shoe(id):
     data = Shoe.query.get(id)
     return data.to_dict()
 
-@shoe_routes.route('/<int:id>', methods=['POST'])
+@shoe_routes.route('', methods=['POST'])
 @login_required
-def post_shoe(id):
+def post_shoe():
     """
     Create a shoe
     """
     form = ShoeForm()
-    print(request)
-    form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
-    print(form.errors)
-    print(form.validate_on_submit())
-    if form.validate_on_submit():
-        shoe = Shoe(body=form.data['body'],
-                        rating = form.data['rating'],
-                        user_id=current_user.id,
-                        shoe_id=id)
-        db.session.add(shoe)
-        db.session.commit()
-        return shoe.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
+    shoe = Shoe(
+            img_url = form.data['img_url'],
+            brand = form.data['brand'],
+            model = form.data['model'],
+            type = form.data['type'],
+            size = form.data['size'],
+            color = form.data['color'],
+            material = form.data['material'],
+            price = form.data['price']
+            )
+    db.session.add(shoe)
+    db.session.commit()
+    return shoe.to_dict()
 
 @shoe_routes.route('/<int:id>', methods=['PUT'])
 @login_required
@@ -62,18 +60,18 @@ def fix_shoe(id):
     Query for a single shoe and edit that shoe
     """
     shoe = Shoe.query.get(id)
-    if current_user.id == shoe.user_id:
-        form = ShoeEditForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        print(form.data)
-        if form.validate_on_submit():
-            shoe.body = form.data['body'],
-            shoe.rating = form.data['rating'],
-            db.session.add(shoe)
-            db.session.commit()
-            return shoe.to_dict()
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    return {'errors': ['Unauthorized']}
+    form = ShoeEditForm()
+    print(form.data)
+    shoe.brand = form.data['brand']
+    shoe.model = form.data['model']
+    shoe.shoe_type = form.data['shoe_type']
+    shoe.size = form.data['size']
+    shoe.color = form.data['color']
+    shoe.material = form.data['material']
+    shoe.price = form.data['price']
+    db.session.add(shoe)
+    db.session.commit()
+    return shoe.to_dict()
 
 @shoe_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
@@ -82,12 +80,9 @@ def remove_shoe(id):
     Query for a single shoe and delete that shoe
     """
     shoe = Shoe.query.get(id)
-    print(current_user.id == shoe.user_id)
-    if current_user.id == shoe.user_id:
-        db.session.delete(shoe)
-        db.session.commit()
-        return {'message': 'Deleted'}
-    return {'errors': ['Unauthorized']}
+    db.session.delete(shoe)
+    db.session.commit()
+    return {'message': 'Deleted'}
 
 
 # review routes

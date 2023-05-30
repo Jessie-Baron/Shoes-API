@@ -3,15 +3,15 @@ from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
 
 class ShoeForm(FlaskForm):
-    img_url = StringField('Image URL')
-    brand = StringField('Brand', validators=[DataRequired()])
-    model = StringField('Model', validators=[DataRequired()])
-    shoe_type = StringField('Type', validators=[DataRequired()])
-    size = IntegerField('Size', validators=[DataRequired()])
-    color = StringField('Color', validators=[DataRequired()])
-    material = StringField('Material', validators=[DataRequired()])
-    price = IntegerField('Price', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    img_url = StringField('img_url')
+    brand = StringField('brand', validators=[DataRequired()])
+    model = StringField('model', validators=[DataRequired()])
+    type = StringField('type', validators=[DataRequired()])
+    size = IntegerField('size', validators=[DataRequired()])
+    color = StringField('color', validators=[DataRequired()])
+    material = StringField('material', validators=[DataRequired()])
+    price = IntegerField('price', validators=[DataRequired()])
+    submit = SubmitField('submit')
 
     # def create_shoe(self):
     #     shoe = ShoeForm(

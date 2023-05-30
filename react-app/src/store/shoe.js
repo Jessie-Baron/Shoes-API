@@ -33,7 +33,7 @@ export const fetchAllShoes = () => async (dispatch) => {
 };
 
 export const fetchPostShoe = (shoe) => async (dispatch) => {
-  const { img_url, brand, model, type, size, color, material, price } = shoe;
+  console.log(shoe)
   const response = await fetch("/api/shoes", {
     method: "POST",
     headers: {
@@ -48,8 +48,8 @@ export const fetchPostShoe = (shoe) => async (dispatch) => {
   }
 };
 
-export const fetchEditShoe = (shoeId, payload) => async (dispatch) => {
-  const res = await fetch(`/api/shoes/${shoeId}`, {
+export const fetchEditShoe = (payload) => async (dispatch) => {
+  const res = await fetch(`/api/shoes/${payload.shoeId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"

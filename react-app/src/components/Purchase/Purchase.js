@@ -21,7 +21,7 @@ const Purchases = () => {
                         <div className="purchaseColumn">{purchase.id + 1}</div>
                         <div className="purchaseColumn">{purchase.name}</div>
                         <div className="purchaseColumn">{purchase.date_of_purchase}</div>
-                        <div className="purchaseColumn">{purchase.Shoe.model}</div>
+                        <div className="purchaseColumn">{purchase.shoe_id}</div>
                         <div className="purchaseColumn5">{purchase.User.first_name} {purchase.User.last_name}</div>
                     </div>
                 ))}

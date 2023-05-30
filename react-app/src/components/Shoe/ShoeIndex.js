@@ -6,6 +6,7 @@ import { fetchAllReviews, fetchDeleteReview } from "../../store/review";
 import ReviewForm from "../Review/ReviewForm";
 import ReviewEditForm from "../Review/ReviewEditForm";
 import './shoes.css'
+import ShoeEditForm from "./ShoeEditForm";
 
 
 
@@ -17,13 +18,25 @@ const Shoes = () => {
     const shoes = Object.values(useSelector((state) => state.shoe));
     const shoe = shoes.filter(shoe => shoeId === shoe.id)[0]
     const dispatch = useDispatch();
+    const history = useHistory()
 
     const [showEdit, setShowEdit] = useState(false);
     const [editId, setEditId] = useState(-1);
+    const [editId2, setEditId2] = useState(-1);
     const [reviewBody, setReviewBody] = useState("");
     const [rating, setRating] = useState(0);
+    const [brand, setBrand] = useState('');
+    const [model, setModel] = useState("");
+    const [type, setType] = useState('');
+    const [size, setSize] = useState('');
+    const [color, setColor] = useState('');
+    const [material, setMaterial] = useState("");
+    const [price, setPrice] = useState('');
 
-
+    // const deleteShoe = async () => {
+    //     await dispatch(shoeActions.fetchDeleteShoe(shoe.id))
+    //         .then(history.push(`/`))
+    // };
 
     const handleDelete = async (reviewId, shoeId) => {
         await dispatch(fetchDeleteReview(reviewId, shoeId))
@@ -38,27 +51,75 @@ const Shoes = () => {
                     alt="Profile"
                     className="shoeImage"
                 />
-                            <div>
-                brand: {shoe?.brand}
-            </div>
-            <div>
-                model: {shoe?.model}
-            </div>
-            <div>
-                type: {shoe?.type}
-            </div>
-            <div>
-                size: {shoe?.size}
-            </div>
-            <div>
-                color: {shoe?.color}
-            </div>
-            <div>
-                material: {shoe?.material}
-            </div>
-            <div>
-                price: ${shoe?.price}
-            </div>
+                <div>
+                    brand: {shoe?.brand}
+                </div>
+                <div>
+                    model: {shoe?.model}
+                </div>
+                <div>
+                    type: {shoe?.type}
+                </div>
+                <div>
+                    size: {shoe?.size}
+                </div>
+                <div>
+                    color: {shoe?.color}
+                </div>
+                <div>
+                    material: {shoe?.material}
+                </div>
+                <div>
+                    price: ${shoe?.price}
+                </div>
+                <br />
+                <div onClick={shoeActions.fetchDeleteShoe(shoe?.id)} className="delete-button">
+                    Delete
+                </div>
+                <div className="edit-button"
+                                                id={shoe?.id}
+                                                value={shoe?.id}
+                                                onClick={() => {
+                                                    if (editId2 === shoe?.id) {
+                                                        setEditId2(-1);
+                                                        setEditId2("");
+                                                        return;
+                                                    }
+                                                    setShowEdit(!showEdit)
+                                                    setEditId2(shoe.id);
+                                                    setBrand(shoe.brand);
+                                                    setModel(shoe.model);
+                                                    setType(shoe.type);
+                                                    setSize(shoe.size);
+                                                    setColor(shoe.color);
+                                                    setMaterial(shoe.material);
+                                                    setPrice(shoe.price);
+                                                }}>
+                                                Edit
+                                            </div>
+                                            <div className="editform">
+                                        {showEdit && (
+                                            <ShoeEditForm
+                                                className="caption-edit-form"
+                                                shoeId={shoe.id}
+                                                setBrand={setBrand}
+                                                brand={brand}
+                                                setModel={setModel}
+                                                model={model}
+                                                setType={setType}
+                                                type={type}
+                                                setSize={setSize}
+                                                size={size}
+                                                setColor={setColor}
+                                                color={color}
+                                                setMaterial={setMaterial}
+                                                material={material}
+                                                setPrice={setPrice}
+                                                price={price}
+                                                setShowEdit={setShowEdit}
+                                            />
+                                        )}
+                                    </div>
             </div>
             <div className="right">
                 <div className="textarea-reviews">
