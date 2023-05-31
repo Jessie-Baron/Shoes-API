@@ -17,11 +17,6 @@ Install dependencies
 
     pipenv install -r requirements.txt
     
-Create a .env file based on the example with proper settings for your development environment
-
-Make sure the SQLite3 database connection URL is in the .env file
-
-This starter organizes all tables inside the flask_schema schema, defined by the SCHEMA environment variable. Replace the value for SCHEMA with a unique name, making sure you use the snake_case convention.
 
 Get into your pipenv, and run your Flask app
 
