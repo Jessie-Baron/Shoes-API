@@ -17,6 +17,7 @@ Install dependencies
 
     pipenv install -r requirements.txt
     
+Copy the contents in the env-example file into a new .env file
 
 Get into your pipenv, and run your Flask app
 
